@@ -1,0 +1,44 @@
+name: changelog
+
+on:
+  push:
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+
+
+  workflow_dispatch: 
+
+    jobs:
+    
+      permissions:
+        contents: write
+        
+      changelog:
+        runs-on: ubuntu-latest
+
+        steps:
+          - name: Checkout Code
+            uses: actions/checkout@v5
+
+          - name: Atualizar CHANGELOG
+            id: changelog
+            uses: requarks/changelog-action@v1
+            with:
+              token: ${{ github.token }} # usado para consultar a API
+              tag: ${{ github.ref_name }} # nome da tag que ativou o workflow
+
+          - name: Criar Release
+            uses: ncipollo/release-action@v1.20.0
+            with:
+              allowUpdates: true
+              draft: true
+              makeLatest: true
+              name: ${{ github.ref_name }}
+              body: ${{ steps.changelog.outputs.changes }}
+              token: ${{ github.token }}
+          - name: Commitar CHANGELOG.md
+            uses: stefanzweifel/git-auto-commit-action@v7
+            with:
+              branch: main
+              commit_message: 'docs: update CHANGELOG.md for ${{ github.ref_name }} [skip ci]'
+              file_pattern: CHANGELOG.md
+              
