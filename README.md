@@ -1,3 +1,4 @@
 - Teste
 - Teste
 - Agora foi
+- Teste da tag e release
