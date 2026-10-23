@@ -4,3 +4,4 @@ Primeiro é preciso frisar que meus actions não estão separados em uma Action 
 
 ## Explicação (linha a linha)
 
+-
