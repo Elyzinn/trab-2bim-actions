@@ -8,7 +8,7 @@ Primeiro é preciso entender que as funções de ***Changelog*** e de publicaç�
 
 ```yaml
 on:
-  push:
+  push: 
     tags:
       - v[0-9]+.[0-9]+.[0-9]+
 ```
@@ -110,44 +110,3 @@ O Job `deploy` possui alguns ***Steps*** (etapas), executados na ordem em que ap
 ### 5. Resumo do fluxo de publicação
 
 Quando uma tag de versão é enviada, o workflow baixa os arquivos, prepara o texto das mudanças, cria a publicação no GitHub e salva o `CHANGELOG.md` atualizado na branch `main`.
-
-## Workflow de CI
-
-Além do workflow de publicação, o projeto possui o arquivo `.github/workflows/ci.yml`. CI é uma verificação automática que pode ser executada quando o projeto muda.
-
-### 1. Quando a CI é iniciada
-
-```yaml
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  workflow_dispatch:
-```
-
-- A CI é iniciada quando há alterações enviadas diretamente para a branch `main`.
-- Também é iniciada quando uma solicitação de alterações (*pull request*) tem como destino a branch `main`.
-- `workflow_dispatch` permite iniciar a CI manualmente pela área de Actions do GitHub.
-
-### 2. Job e etapas da CI
-
-```yaml
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Run a one-line script
-        run: echo Hello, world!
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-```
-
-- O Job `build` também é executado em um ambiente Linux do GitHub.
-- A primeira etapa baixa os arquivos do projeto.
-- As duas etapas seguintes apenas exibem mensagens no registro da execução.
-- Portanto, atualmente essa CI demonstra o funcionamento básico das Actions, mas ainda não executa testes ou validações do código PHP.
-
