@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.3.4] - 2026-10-28
+### :sparkles: New Features
+- [`090afce`](https://github.com/Elyzinn/trab-2bim-actions/commit/090afce4027e1fe4279d413c2c49205dd899c1f2) - add ACTION.md para explicar funcionamento do projeto *(commit by [@Elyzinn](https://github.com/Elyzinn))*
+- [`90b19f9`](https://github.com/Elyzinn/trab-2bim-actions/commit/90b19f9333625a3c128dcc90f1c5dd3f19985585) - Atualizado ACTION.md *(commit by [@Elyzinn](https://github.com/Elyzinn))*
+- [`c70a9df`](https://github.com/Elyzinn/trab-2bim-actions/commit/c70a9df92b6bcb5de894a2fd27391c21a0cc49e9) - Atualizado ACTION.md com mais infos *(commit by [@Elyzinn](https://github.com/Elyzinn))*
+
+### :recycle: Refactors
+- [`d2df0c1`](https://github.com/Elyzinn/trab-2bim-actions/commit/d2df0c109497b24fd0080e188e5333be7fa86f00) - Finalizado ACTION.md contendo funcionamento do projeto *(commit by [@Elyzinn](https://github.com/Elyzinn))*
+- [`20bdef6`](https://github.com/Elyzinn/trab-2bim-actions/commit/20bdef62e1c3a341e4e0ac6a7499b02a11244139) - Finalizado ACTION.md contendo funcionamento do projeto *(commit by [@Elyzinn](https://github.com/Elyzinn))*
+
+
 ## [v1.3.2] - 2026-10-23
 ### :sparkles: New Features
 - [`6ccca6f`](https://github.com/Elyzinn/trab-2bim-actions/commit/6ccca6f31a75876d02696810eda5a62576ceed47) - add ACTION.md para explicar funcionamento do projeto *(commit by [@Elyzinn](https://github.com/Elyzinn))*
@@ -35,3 +46,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.3.0]: https://github.com/Elyzinn/trab-2bim-actions/compare/v1.1.0...v1.3.0
 [v1.3.1]: https://github.com/Elyzinn/trab-2bim-actions/compare/v1.3.0...v1.3.1
 [v1.3.2]: https://github.com/Elyzinn/trab-2bim-actions/compare/v1.3.1...v1.3.2
+[v1.3.4]: https://github.com/Elyzinn/trab-2bim-actions/compare/v1.3.3...v1.3.4
