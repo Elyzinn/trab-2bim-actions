@@ -110,3 +110,46 @@ O Job `deploy` possui alguns ***Steps*** (etapas), executados na ordem em que ap
 ### 5. Resumo do fluxo de publicação
 
 Quando uma tag de versão é enviada, o workflow baixa os arquivos, prepara o texto das mudanças, cria a publicação no GitHub e salva o `CHANGELOG.md` atualizado na branch `main`.
+
+## Como executar a Action de Changelog
+
+Depois que o workflow estiver na branch padrão do repositório, acompanhe as execuções pela aba **Actions**.
+
+### 1. Conferir se as Actions estão habilitadas
+
+1. Abra o repositório no GitHub.
+2. Acesse **Settings > Actions > General**.
+3. Em **Actions permissions**, permita o uso de Actions conforme a configuração da organização ou do repositório.
+4. Se houver a opção **Workflow permissions**, selecione permissões de leitura e escrita para que o workflow de publicação possa criar a Release e atualizar o `CHANGELOG.md`. O workflow também declara `contents: write`.
+5. Salve as alterações, se necessário.
+
+### 2. Publicar uma versão e atualizar o Changelog
+
+O workflow `Deploy`, definido em `.github/workflows/changelog.yml`, é iniciado automaticamente quando uma tag de versão é enviada. Ele não possui o gatilho manual `workflow_dispatch`.
+
+1. Confira se as alterações que devem ser publicadas já estão na branch `main`.
+2. No terminal, atualize as referências e crie uma tag seguindo o formato `vMAJOR.MINOR.PATCH`, por exemplo:
+
+   ```bash
+   git checkout main
+   git pull origin main
+   git tag v1.3.5
+   ```
+
+3. Envie a tag para o GitHub:
+
+   ```bash
+   git push origin v1.3.5
+   ```
+
+4. No GitHub, abra **Actions** e acompanhe a execução de **Deploy** iniciada pela tag.
+5. Quando todas as etapas terminarem com sucesso, confira a nova Release em **Releases** e a atualização do `CHANGELOG.md` na branch `main`.
+
+Cada versão deve usar uma tag nova. Para publicar outra versão, incremente o número apropriado e repita os passos.
+
+### 3. Se uma execução não iniciar ou falhar
+
+- Confirme que o workflow está na branch padrão do repositório e que Actions estão habilitadas.
+- Para o Deploy, confirme que enviou uma tag no formato `v1.2.3` com `git push origin <tag>`. Apenas criar a tag localmente não inicia o workflow.
+- Na aba **Actions**, abra a execução com falha e consulte a etapa marcada em vermelho para ver os detalhes do erro.
+- Se a etapa que salva o `CHANGELOG.md` não tiver permissão, verifique as permissões do workflow em **Settings > Actions > General**.
